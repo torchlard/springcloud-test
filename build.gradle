@@ -1,0 +1,68 @@
+plugins {
+  // id 'java'
+  // id 'org.springframework.boot' version '2.1.9.RELEASE'
+  id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+  // id 'com.gradle.build-scan' version '2.4.2'
+}
+
+subprojects {
+
+  group = 'parents'
+  version = '0.0.1-snapshot'
+
+  apply plugin: 'java'
+  apply plugin: 'io.spring.dependency-management'
+  apply plugin: 'java-library'
+
+  repositories {
+    mavenCentral()
+  }
+
+  sourceCompatibility = 1.11
+  targetCompatibility = 1.11
+
+  dependencyManagement {
+    imports {
+      mavenBom("org.springframework.boot:spring-boot-dependencies:2.1.9.RELEASE")
+    }
+  }
+  
+  def version = "2.1.9.RELEASE"
+  // def mainClassName = "Demo.App"
+
+  dependencies {
+    // compile("org.springframework.boot:spring-boot-starter:${version}")
+    // compile("org.springframework.boot:spring-boot-starter-web:${version}")
+    compile("org.springframework.boot:spring-boot-starter-test:${version}")
+    // compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.1.3.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Greenwich.SR3', ext: 'pom'
+
+  }
+
+  
+
+}
+
+
+// sourceSets {
+//   main {
+//     java {
+//       srcDirs = ['src/main/java']
+//     }
+//     resources {
+//       srcDirs = ['src/main/resources']
+//     }
+//   }
+// }
+
+// bootJar {
+//   mainClassName = mainClassName
+// }
+
+
+
+
+
+
+
+
